@@ -86,7 +86,7 @@ const handleNotification = (hapticType: HapticType) => {
           haptics based on type value passed. Type can be one of these values:
         </p>
 
-        <fieldset
+        <div
           class="card p-3 shadow-sm haptic__fieldset"
           :class="{
             'haptic__fieldset--success': chosenHapticNotification === HapticType.success,
@@ -130,7 +130,7 @@ const handleNotification = (hapticType: HapticType) => {
             />
             <label class="form-check-label" for="warning">Warning</label>
           </div>
-        </fieldset>
+        </div>
       </article>
     </div>
   </section>
