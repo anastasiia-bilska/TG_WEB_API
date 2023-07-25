@@ -1,11 +1,15 @@
-import '@/assets/main.css'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import './main.scss';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
+app.use(router);
 
-app.mount('#app')
+app.mount('#app');
+
+window.Telegram.WebApp.expand();
+
+document.addEventListener('touchstart', function () {}, false);
