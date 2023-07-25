@@ -1,0 +1,75 @@
+@import './colors';
+
+%button {
+  padding: 6px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  user-select: none;
+}
+
+%button-medium {
+  @extend %button;
+  color: $color__main;
+  background-color: $color__telegram;
+  border: 1px solid $color__accent;
+
+  transition: background-color 0.3s ease-in-out;
+
+  &:active {
+    background-color: $color__accent;
+  }
+}
+
+%button-light {
+  @extend %button;
+  color: $color__primary;
+  background-color: $color__warning-light;
+  border: 1px solid $color__warning;
+
+  transition: background-color 0.3s ease-in-out;
+
+  &:active {
+    background-color: $color__warning;
+  }
+}
+
+%button-heavy {
+  @extend %button;
+  color: $color__main;
+  background-color: $color__button;
+  border: 1px solid $color__button-dark;
+
+  transition: background-color 0.3s ease-in-out;
+
+  &:active {
+    background-color: $color__button-dark;
+  }
+}
+
+%button-rigid {
+  @extend %button;
+  color: $color__primary;
+  background-color: $color__background;
+  border: 1px solid $color__secondary;
+
+  transition: background-color 0.3s ease-in-out;
+
+  &:active {
+    background-color: $color__secondary;
+  }
+}
+
+%button-soft {
+  @extend %button;
+  color: $color__main;
+  background-color: $color__menu;
+  border: 1px solid $color__menu-dark;
+
+  transition: background-color 0.3s ease-in-out;
+
+  &:active {
+    background-color: $color__menu-dark;
+  }
+}
