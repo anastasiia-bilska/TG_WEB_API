@@ -1,22 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+
 import { HapticType } from '@/types/EnumHaptic';
 
 import ScrollPicker from '@/components/ScrollPicker/ScrollPicker.vue';
 
 const chosenHapticNotification = ref<HapticType | null>(null);
-
+const telegram = (window as any).Telegram;
 const handleHaptic = (hapticType: HapticType) => {
-  window.Telegram.WebApp.HapticFeedback.impactOccurred(hapticType);
+  telegram.WebApp.HapticFeedback.impactOccurred(hapticType);
 };
 
 const handleNotification = (hapticType: HapticType) => {
-  window.Telegram.WebApp.HapticFeedback.notificationOccurred(hapticType);
+  telegram.WebApp.HapticFeedback.notificationOccurred(hapticType);
 
   chosenHapticNotification.value = hapticType;
 };
-
-
 </script>
 
 <template>
@@ -126,9 +125,10 @@ const handleNotification = (hapticType: HapticType) => {
 
     <article>
       <p>
-        <i><strong>selectionChanged()</strong></i> - a method tells that the user has changed a selection. The Telegram app may play the appropriate haptics.
+        <i><strong>selectionChanged()</strong></i> - a method tells that the user has changed a
+        selection. The Telegram app may play the appropriate haptics.
       </p>
-      
+
       <div class="card shadow-sm">
         <ScrollPicker />
       </div>
@@ -188,3 +188,4 @@ const handleNotification = (hapticType: HapticType) => {
   }
 }
 </style>
+@/components/HapticFeedback/EnumHaptic
