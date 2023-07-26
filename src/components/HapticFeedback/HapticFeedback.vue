@@ -15,6 +15,8 @@ const handleNotification = (hapticType: HapticType) => {
 
   chosenHapticNotification.value = hapticType;
 };
+
+
 </script>
 
 <template>
