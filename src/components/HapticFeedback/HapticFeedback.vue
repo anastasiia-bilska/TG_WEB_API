@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import { HapticType } from '@/types/EnumHaptic';
 
+import ScrollPicker from '@/components/ScrollPicker/ScrollPicker.vue';
+
 const chosenHapticNotification = ref<HapticType | null>(null);
 
 const handleHaptic = (hapticType: HapticType) => {
@@ -12,20 +14,6 @@ const handleNotification = (hapticType: HapticType) => {
   window.Telegram.WebApp.HapticFeedback.notificationOccurred(hapticType);
 
   chosenHapticNotification.value = hapticType;
-  // // accessing the radio buttons
-  // let sucess = document.querySelector('haptic-success') as HTMLInputElement ;
-  // let error = document.querySelector('haptic-error') as HTMLInputElement;
-  // let warning = document.querySelector('haptic-warning') as HTMLInputElement;
-  // // checking if any radio button is selected
-  // if (sucess.checked) {
-  //   output.innerHTML = 'The radio button with value ' + radio1.value + ' is checked!';
-  // }
-  // if (radio2.checked) {
-  //   output.innerHTML = 'The radio button with value ' + radio2.value + ' is checked!';
-  // }
-  // if (radio3.checked) {
-  //   output.innerHTML = 'The radio button with value ' + radio3.value + ' is checked!';
-  // }
 };
 </script>
 
@@ -79,7 +67,7 @@ const handleNotification = (hapticType: HapticType) => {
         </div>
       </article>
 
-      <article>
+      <article class="mb-4">
         <p>
           <i><strong>notificationOccurred(type)</strong></i> - a method tells that a task or action
           has succeeded, failed, or produced a warning. The Telegram app may play the appropriate
@@ -133,6 +121,16 @@ const handleNotification = (hapticType: HapticType) => {
         </div>
       </article>
     </div>
+
+    <article>
+      <p>
+        <i><strong>selectionChanged()</strong></i> - a method tells that the user has changed a selection. The Telegram app may play the appropriate haptics.
+      </p>
+      
+      <div class="card shadow-sm">
+        <ScrollPicker />
+      </div>
+    </article>
   </section>
 </template>
 

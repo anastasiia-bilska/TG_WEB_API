@@ -4,8 +4,6 @@ import HapticFeedback from '@/components/HapticFeedback/HapticFeedback.vue';
 
 <template>
   <main class="container">
-     <input type="email" class="form-control" id="floatingInput">
-
      <HapticFeedback />
   </main>
 </template>
