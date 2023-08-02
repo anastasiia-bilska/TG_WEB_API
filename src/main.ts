@@ -1,4 +1,6 @@
 import { createApp } from 'vue';
+import {useRouter} from 'vue-router';
+
 import App from './App.vue';
 import router from './router';
 
@@ -16,7 +18,8 @@ window.Telegram.WebApp.BackButton.show();
 
 window.Telegram.WebApp.onEvent('backButtonClicked', () => {
   (() => {
-    router.go(-1);
+    const backRouter = useRouter();
+    backRouter.go(-1);
   })();
 });
 

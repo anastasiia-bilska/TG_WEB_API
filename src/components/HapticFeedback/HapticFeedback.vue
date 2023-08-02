@@ -17,8 +17,6 @@ const handleNotification = (hapticType: HapticType) => {
 
   chosenHapticNotification.value = hapticType;
 };
-
-const router = useRouter();
 </script>
 
 <template>
