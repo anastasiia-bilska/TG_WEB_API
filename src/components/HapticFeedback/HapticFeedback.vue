@@ -23,6 +23,7 @@ const router = useRouter();
 window.Telegram.WebApp.BackButton.show();
 
 window.Telegram.WebApp.BackButton.onClick('backButtonClicked', () => {
+  alert('go back!')
   router.go(-1);
 });
 </script>
