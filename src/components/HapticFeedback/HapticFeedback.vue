@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 import { HapticType } from '@/types/EnumHaptic';
 
@@ -16,6 +17,14 @@ const handleNotification = (hapticType: HapticType) => {
 
   chosenHapticNotification.value = hapticType;
 };
+
+const router = useRouter();
+
+window.Telegram.WebApp.BackButton.show();
+
+window.Telegram.WebApp.BackButton.onClick('backButtonClicked', () => {
+  router.go(-1);
+});
 </script>
 
 <template>
