@@ -11,6 +11,6 @@ app.use(router);
 app.mount('#app');
 
 window.Telegram.WebApp.expand();
-window.Telegram.WebApp.backButton.show();
+window.Telegram.WebApp.BackButton.show();
 
 document.addEventListener('touchstart', function () {}, false);
