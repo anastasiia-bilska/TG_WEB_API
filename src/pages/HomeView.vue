@@ -4,6 +4,6 @@ import HapticFeedback from '@/components/HapticFeedback/HapticFeedback.vue';
 
 <template>
   <main class="container">
-     <HapticFeedback />
+    <router-link to="/haptic">HapticFeedback</router-link>
   </main>
 </template>
