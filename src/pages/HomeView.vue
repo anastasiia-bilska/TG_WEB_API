@@ -1,5 +1,7 @@
 <script setup lang="ts">
 // import HapticFeedback from '@/components/HapticFeedback/HapticFeedback.vue';
+
+window.Telegram.WebApp.BackButton.hide();
 </script>
 
 <template>

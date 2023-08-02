@@ -19,14 +19,6 @@ const handleNotification = (hapticType: HapticType) => {
 };
 
 const router = useRouter();
-
-window.Telegram.WebApp.BackButton.show();
-
-window.Telegram.WebApp.onEvent('backButtonClicked', () => {
-  (() => {
-    router.go(-1);
-  })()
-})
 </script>
 
 <template>
