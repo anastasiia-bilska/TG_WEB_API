@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import {useRouter} from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 
 import App from './App.vue';
 import router from './router';
@@ -14,7 +14,13 @@ app.mount('#app');
 
 window.Telegram.WebApp.expand();
 
-window.Telegram.WebApp.BackButton.show();
+const route = useRoute();
+
+if (route.name === 'home') {
+  window.Telegram.WebApp.BackButton.hide();
+} else {
+  window.Telegram.WebApp.BackButton.show();
+}
 
 window.Telegram.WebApp.onEvent('backButtonClicked', () => {
   (() => {
