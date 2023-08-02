@@ -24,7 +24,7 @@ window.Telegram.WebApp.BackButton.show();
 
 window.Telegram.WebApp.onEvent('backButtonClicked', () => {
   (() => {
-    alert('click')
+    router.go(-1);
   })()
 })
 </script>
