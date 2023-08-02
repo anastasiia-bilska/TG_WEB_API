@@ -22,10 +22,11 @@ const router = useRouter();
 
 window.Telegram.WebApp.BackButton.show();
 
-window.Telegram.WebApp.onClick('backButtonClicked', () => {
-  alert('go back!')
-  router.go(-1);
-});
+window.Telegram.WebApp.onEvent('backButtonClicked', () => {
+  (() => {
+    alert('click')
+  })()
+})
 </script>
 
 <template>
