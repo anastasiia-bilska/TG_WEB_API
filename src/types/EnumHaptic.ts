@@ -8,5 +8,3 @@ export enum HapticType {
   success = 'success',
   warning = 'warning'
 }
-
-// export type HapticType = 'light' | 'medium' | 'heavy' | 'rigid' | 'soft' | 'error' | 'success' | 'warning';

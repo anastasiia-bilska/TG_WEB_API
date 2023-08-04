@@ -3,7 +3,7 @@ import { ref } from 'vue';
 
 import { HapticType } from '@/types/EnumHaptic';
 
-import ScrollPicker from '@/components/ScrollPicker/ScrollPicker.vue';
+import ScrollPicker from '@/components/HapticFeedback/ScrollPicker/ScrollPicker.vue';
 
 const chosenHapticNotification = ref<HapticType | null>(null);
 const telegram = (window as any).Telegram;
@@ -190,4 +190,3 @@ const handleNotification = (hapticType: HapticType) => {
   }
 }
 </style>
-@/components/HapticFeedback/EnumHaptic

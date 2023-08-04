@@ -12,8 +12,13 @@ const router = createRouter({
       path: '/haptic',
       name: 'haptic',
       component: () => import('@/components/HapticFeedback/HapticFeedback.vue')
+    },
+    {
+      path: '/main-button',
+      name: 'main-button',
+      component: () => import('@/components/MainButton/MainButton.vue')
     }
   ]
-})
+});
 
 export default router

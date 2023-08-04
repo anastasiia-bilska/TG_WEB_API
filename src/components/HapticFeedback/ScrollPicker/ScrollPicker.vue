@@ -1,7 +1,7 @@
 <script lang="ts">
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import ScrollWheel from '@/components/ScrollWheel/ScrollWheel.vue'
+import ScrollWheel from '@/components/HapticFeedback/ScrollWheel/ScrollWheel.vue'
 
 export default {
   components: {
