@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const buttonText = ref<String>(window.Telegram.MainButton.text);
+const telegram = (window as any).Telegram;
 
-const changeMainButton = (option: String) => {
+const buttonText = ref<String>(telegram.WebApp.MainButton.text);
 
-}
+const changeMainButton = (option: String) => {};
 </script>
 
 <template>
@@ -14,11 +14,11 @@ const changeMainButton = (option: String) => {
 
     <article class="mb-4">
       <p>
-        <i><strong>MainButton</strong></i> - this <i>object</i> controls the main button, which is displayed at the bottom of the Web App in the Telegram interface.
+        <i><strong>MainButton</strong></i> - this <i>object</i> controls the main button, which is
+        displayed at the bottom of the Web App in the Telegram interface.
       </p>
 
       <p>{{ buttonText }}</p>
-
     </article>
   </section>
 </template>
