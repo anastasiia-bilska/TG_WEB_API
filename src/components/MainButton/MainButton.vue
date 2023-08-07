@@ -51,6 +51,8 @@ const handleCheckmark = (event: Event) => {
 const handleClickEvent = (event: Event) => {
   const target = event.target as HTMLInputElement;
 
+  console.log(telegram.WebApp.MainButton)
+
   if (target.checked) {
     telegram.WebApp.MainButton.onClick(() => {
       (() => {
@@ -64,12 +66,6 @@ const handleClickEvent = (event: Event) => {
       })();
     });
   }
-
-  telegram.WebApp.MainButton.onclick(() => {
-    (() => {
-      telegram.WebApp.HapticFeedback.notificationOccurred('success');
-    })();
-  });
 };
 </script>
 
