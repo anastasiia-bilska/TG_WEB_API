@@ -41,6 +41,30 @@ const handleCheckmark = (event: Event) => {
 
   buttonIsActive.value = telegram.WebApp.MainButton.isActive;
 };
+
+const handleClickEvent = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+
+  if (target.checked) {
+    telegram.WebApp.MainButton.onclick(() => {
+      (() => {
+        telegram.WebApp.HapticFeedback.notificationOccurred('success');
+      })();
+    });
+  } else {
+    telegram.WebApp.MainButton.offclick(() => {
+      (() => {
+        telegram.WebApp.HapticFeedback.notificationOccurred('error');
+      })();
+    });
+  }
+
+  telegram.WebApp.MainButton.onclick(() => {
+    (() => {
+      telegram.WebApp.HapticFeedback.notificationOccurred('success');
+    })();
+  });
+};
 </script>
 
 <template>
@@ -103,13 +127,16 @@ const handleCheckmark = (event: Event) => {
       </p>
 
       <div class="card p-3 shadow-sm">
-        <label class="d-block mb-2 fw-medium" for="main-btn-text">Set new MainButton text:</label>
+        <label class="d-block mb-2 fw-medium" for="main-btn-text"
+          >Set new MainButton text (max 64 symbols):</label
+        >
         <div class="input-group">
           <input
             v-model="buttonTextCustom"
             type="text"
             id="main-btn-text"
             name="main-btn-text"
+            maxlength="64"
             class="form-control"
             placeholder="Type new MainButton text..."
             aria-label="new MainButton text"
@@ -147,6 +174,38 @@ const handleCheckmark = (event: Event) => {
           />
           <label class="form-check-label" for="flexCheckChecked">
             I agree to the terms & conditions
+          </label>
+        </div>
+      </div>
+    </article>
+
+    <article class="mb-5">
+      <p class="mb-2">
+        <i><strong>offClick(callback)</strong></i> - a method that removes the button press event
+        handler. An alias for
+        <code class="main-btn__marked"
+          >Telegram.WebApp.offEvent('mainButtonClicked', callback)</code
+        >
+      </p>
+
+      <p class="mb-3">
+        <i><strong>onClick(callback)</strong></i> - a method that sets the button press event
+        handler. An alias for
+        <code class="main-btn__marked">Telegram.WebApp.onEvent('mainButtonClicked', callback)</code>
+      </p>
+
+      <div div class="card p-3 shadow-sm">
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckChecked"
+            checked
+            @change="handleClickEvent"
+          />
+          <label class="form-check-label" for="flexSwitchCheckChecked">
+            Enable vibration on click
           </label>
         </div>
       </div>
@@ -213,6 +272,14 @@ const handleCheckmark = (event: Event) => {
     &--unfilled {
       background-image: url('@/assets/static/cart-unfilled.svg');
     }
+  }
+
+  &__marked {
+    display: inline-block;
+    padding: 0 6px;
+
+    background-color: $color__warning-light;
+    border-radius: 6px;
   }
 }
 </style>
