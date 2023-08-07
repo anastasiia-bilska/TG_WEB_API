@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import MainButtonOptions from '@/components/MainButton/MainButtonOptions/MainButtonOptions.vue';
+import { sleep } from '@/helpers/sleep';
 
 const telegram = (window as any).Telegram;
 
@@ -61,6 +62,12 @@ const handleClickEvent = (event: Event) => {
     telegram.WebApp.MainButton.offClick(callback);
   }
 };
+
+const login = async () => {
+  telegram.WebApp.MainButton.showProgress();
+  await sleep(2000);
+  telegram.WebApp.MainButton.hideProgress();
+};
 </script>
 
 <template>
@@ -111,7 +118,7 @@ const handleClickEvent = (event: Event) => {
                 'main-btn__cart--unfilled': !buttonIsVisible
               }"
             ></span>
-            {{ buttonIsVisible ? 'Remove from cart' : 'Add to cart' }}
+            {{ buttonIsVisible ? 'Remove from the cart' : 'Add to the cart' }}
           </button>
         </article>
       </div>
@@ -196,14 +203,31 @@ const handleClickEvent = (event: Event) => {
             class="form-check-input"
             type="checkbox"
             role="switch"
-            id="flexSwitchCheckChecked"
+            id="vibration-switch"
             checked
             @change="handleClickEvent"
           />
-          <label class="form-check-label" for="flexSwitchCheckChecked">
-            Enable vibration on click
-          </label>
+          <label class="form-check-label" for="vibration-switch"> Enable vibration on click </label>
         </div>
+      </div>
+    </article>
+
+    <article class="mb-5">
+      <p class="mb-2">
+        <i><strong>showProgress(leaveActive)</strong></i> -a method to show a loading indicator on
+        the button. It is recommended to display loading progress if the action tied to the button
+        may take a long time. By default, the button is disabled while the action is in progress. If
+        the parameter
+        <code class="main-btn__marked">leaveActive=true</code>
+        is passed, the button remains enabled.
+      </p>
+
+      <p class="mb-3">
+        <i><strong>hideProgress()</strong></i> - a method to hide the loading indicator.
+      </p>
+
+      <div div class="card p-3 shadow-sm">
+        <button @click="login" class="main-btn__login" type="button">Login</button>
       </div>
     </article>
   </section>
@@ -276,6 +300,10 @@ const handleClickEvent = (event: Event) => {
 
     background-color: $color__warning-light;
     border-radius: 6px;
+  }
+
+  &__login {
+    @extend %button-medium;
   }
 }
 </style>
