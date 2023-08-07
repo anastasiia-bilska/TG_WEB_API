@@ -20,15 +20,27 @@ const setText = () => {
   buttonTextCustom.value = '';
 };
 
-const showButton = () => {
-  telegram.WebApp.MainButton.show();
-  buttonIsVisible.value = telegram.WebApp.MainButton.isVisible;
-}
+const toggleButton = () => {
+  if (!buttonIsVisible.value) {
+    telegram.WebApp.MainButton.show();
+  } else {
+    telegram.WebApp.MainButton.hide();
+  }
 
-const hideButton = () => {
-  telegram.WebApp.MainButton.hide();
   buttonIsVisible.value = telegram.WebApp.MainButton.isVisible;
-}
+};
+
+const handleCheckmark = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+
+  if (target.checked) {
+    telegram.WebApp.MainButton.enable();
+  } else {
+    telegram.WebApp.MainButton.disable();
+  }
+
+  buttonIsActive.value = telegram.WebApp.MainButton.isActive;
+};
 </script>
 
 <template>
@@ -53,9 +65,35 @@ const hideButton = () => {
         <i><strong>hide()</strong></i> - a method to hide the button.
       </p>
 
-      <div class="card p-3 shadow-sm">
-        <button class="mb-2 main-btn__show" type="button" @click="showButton">Show the MainButton</button>
-        <button type="button" class="main-btn__hide" @click="hideButton">Hide the MainButton</button>
+      <div class="card p-3 shadow-sm d-flex">
+        <article class="card p-3 shadow-sm">
+          <img
+            src="https://biotus.ua/media/catalog/product/cache/fa65709cb924250dcd7e95212b5f977b/3/-/3-5now-now00372-41.jpg-1.jpg"
+            alt="vitamin D"
+            class="w-50 align-self-center mb-4"
+          />
+          <h3 class="mb-2">NOW Foods, Vitamin D-3</h3>
+          <p class="mb-2">High Potency, 5,000 IU, 120 Softgels</p>
+          <p class="mb-3">Price: $6.24</p>
+          <button
+            class="main-btn__toggle"
+            :class="{
+              'main-btn__toggle--show': buttonIsVisible,
+              'main-btn__toggle--hide': !buttonIsVisible
+            }"
+            type="button"
+            @click="toggleButton"
+          >
+            <span
+              class="main-btn__cart"
+              :class="{
+                'main-btn__cart--filled': buttonIsVisible,
+                'main-btn__cart--unfilled': !buttonIsVisible
+              }"
+            ></span>
+            {{ buttonIsVisible ? 'Remove from cart' : 'Add to cart' }}
+          </button>
+        </article>
       </div>
     </article>
 
@@ -76,7 +114,40 @@ const hideButton = () => {
             placeholder="Type new MainButton text..."
             aria-label="new MainButton text"
           />
-          <button class="main-btn__input-btn" :disabled="buttonTextCustom.length < 1" type="button" @click="setText">change</button>
+          <button
+            class="main-btn__input-btn"
+            :disabled="buttonTextCustom.length < 1"
+            type="button"
+            @click="setText"
+          >
+            change
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="mb-5">
+      <p class="mb-2">
+        <i><strong>enable()</strong></i> - a method to enable the button.
+      </p>
+
+      <p class="mb-3">
+        <i><strong>disable()</strong></i> - a method to disable the button.
+      </p>
+
+      <div class="card p-3 shadow-sm">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+            checked
+            @change="handleCheckmark"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            I agree to the terms & conditions
+          </label>
         </div>
       </div>
     </article>
@@ -99,7 +170,9 @@ const hideButton = () => {
     border: 1px solid transparent;
     border-radius: 0 0.375rem 0.375rem 0;
 
-    transition: background-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    transition:
+      background-color 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
 
     &[disabled] {
       opacity: 0.6;
@@ -110,12 +183,36 @@ const hideButton = () => {
     }
   }
 
-  &__show {
-    @extend %button-soft;
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--show {
+      @extend %button-heavy;
+    }
+
+    &--hide {
+      @extend %button-soft;
+    }
   }
 
-  &__hide {
-    @extend %button-heavy;
+  &__cart {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--filled {
+      background-image: url('@/assets/static/cart-filled.svg');
+    }
+
+    &--unfilled {
+      background-image: url('@/assets/static/cart-unfilled.svg');
+    }
   }
 }
 </style>
