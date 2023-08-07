@@ -51,20 +51,18 @@ const handleCheckmark = (event: Event) => {
 const handleClickEvent = (event: Event) => {
   const target = event.target as HTMLInputElement;
 
-  console.log(telegram.WebApp.MainButton)
+  console.log(telegram.WebApp.MainButton);
+
+  const callback = () => {
+    (() => {
+      telegram.WebApp.HapticFeedback.notificationOccurred('success');
+    })();
+  };
 
   if (target.checked) {
-    telegram.WebApp.MainButton.onClick(() => {
-      (() => {
-        telegram.WebApp.HapticFeedback.notificationOccurred('success');
-      })();
-    });
+    telegram.WebApp.MainButton.onClick(callback);
   } else {
-    telegram.WebApp.MainButton.offClick(() => {
-      (() => {
-        telegram.WebApp.HapticFeedback.notificationOccurred('error');
-      })();
-    });
+    telegram.WebApp.MainButton.offClick(callback);
   }
 };
 </script>
