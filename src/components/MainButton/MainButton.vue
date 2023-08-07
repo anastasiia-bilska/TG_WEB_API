@@ -13,6 +13,12 @@ const buttonIsVisible = ref<boolean>(telegram.WebApp.MainButton.isVisible);
 const buttonIsActive = ref<boolean>(telegram.WebApp.MainButton.isActive);
 const buttonIsProgressVisible = ref<boolean>(telegram.WebApp.MainButton.isProgressVisible);
 
+telegram.WebApp.MainButton.onClick(() => {
+  (() => {
+    telegram.WebApp.HapticFeedback.notificationOccurred('success');
+  })();
+});
+
 const setText = () => {
   telegram.WebApp.MainButton.setText(buttonTextCustom.value);
   buttonText.value = telegram.WebApp.MainButton.text;
@@ -46,13 +52,13 @@ const handleClickEvent = (event: Event) => {
   const target = event.target as HTMLInputElement;
 
   if (target.checked) {
-    telegram.WebApp.MainButton.onclick(() => {
+    telegram.WebApp.MainButton.onClick(() => {
       (() => {
         telegram.WebApp.HapticFeedback.notificationOccurred('success');
       })();
     });
   } else {
-    telegram.WebApp.MainButton.offclick(() => {
+    telegram.WebApp.MainButton.offClick(() => {
       (() => {
         telegram.WebApp.HapticFeedback.notificationOccurred('error');
       })();
