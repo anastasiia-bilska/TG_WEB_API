@@ -1,0 +1,11 @@
+@import '@/assets/sassStyles/colors';
+
+.nfc {
+  &__success {
+    background-color: $color__success-light;
+  }
+
+  &__failture {
+    background-color: $color__danger-light;
+  }
+}

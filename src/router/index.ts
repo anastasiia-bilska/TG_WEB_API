@@ -17,6 +17,11 @@ const router = createRouter({
       path: '/main-button',
       name: 'main-button',
       component: () => import('@/components/MainButton/MainButton.vue')
+    },
+    {
+      path: '/nfc',
+      name: 'nfc',
+      component: () => import('@/components/NFC/NFC.vue')
     }
   ]
 });
