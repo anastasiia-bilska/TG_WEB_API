@@ -19,6 +19,15 @@ const writeNFC = async () => {
   // const encoder = new TextEncoder();
 
   if ('NDEFReader' in window) {
+    try {
+      const permissionName = 'nfc' as PermissionName;
+      const status = await navigator.permissions.query({ name: permissionName });
+
+      console.log({ status });
+    } catch (e) {
+      console.log({ e });
+    }
+    
     const ndef = new window.NDEFReader();
     try {
       await ndef.write('hello world', { timeout: 1_000 });
