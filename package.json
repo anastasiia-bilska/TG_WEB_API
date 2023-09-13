@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@types/w3c-web-nfc": "^1.0.0",
     "keen-slider": "^6.8.6",
     "prettier": "^3.0.1",
     "telegraf": "^4.12.2",
