@@ -20,6 +20,7 @@ const writeNFC = async () => {
 
   if ('NDEFReader' in window) {
     const ndef = new window.NDEFReader();
+    await ndef.scan()
 
     try {
       await ndef.write({
