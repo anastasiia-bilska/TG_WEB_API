@@ -16,32 +16,19 @@ const handleSelect = (event: Event) => {
 };
 
 const writeNFC = async () => {
-  const encoder = new TextEncoder();
+  // const encoder = new TextEncoder();
 
-  if ('NDEFWriter' in window) {
-    const ndef = new window.NDEFWriter();
-    await ndef.scan()
-
+  if ('NDEFReader' in window) {
+    const ndef = new window.NDEFReader();
     try {
-      await ndef.write({
-        records: [
-          {
-            recordType: 'mime',
-            mediaType: 'application/json',
-            data: encoder.encode(
-              JSON.stringify({
-                number: drugStoreNumber.value,
-                admin: adminLastName.value
-              })
-            )
-          }
-        ]
-      });
+      await ndef.write('hello world', { timeout: 1_000 });
 
       alert(`write() success!✅`);
     } catch (error) {
       alert(`write() error: ${error}❌`);
     }
+  } else {
+    alert('Web NFC is not supported.');
   }
 };
 </script>
