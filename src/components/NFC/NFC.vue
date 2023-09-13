@@ -18,8 +18,8 @@ const handleSelect = (event: Event) => {
 const writeNFC = async () => {
   const encoder = new TextEncoder();
 
-  if ('NDEFReader' in window) {
-    const ndef = new window.NDEFReader();
+  if ('NDEFWriter' in window) {
+    const ndef = new window.NDEFWriter();
     await ndef.scan()
 
     try {
