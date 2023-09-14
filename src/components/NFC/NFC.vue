@@ -15,17 +15,16 @@ const handleSelect = (event: Event) => {
   console.log(drugStoreNumber.value);
 };
 
-try {
-  const permissionName = 'nfc' as PermissionName;
-  const status = await navigator.permissions.query({ name: permissionName });
-
-  console.log({ status });
-} catch (e) {
-  console.log({ e });
-}
-
 const writeNFC = async () => {
   // const encoder = new TextEncoder();
+  try {
+    const permissionName = 'nfc' as PermissionName;
+    const status = await navigator.permissions.query({ name: permissionName });
+
+    console.log({ status });
+  } catch (e) {
+    console.log({ e });
+  }
 
   if ('NDEFReader' in window) {
     try {
