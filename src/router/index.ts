@@ -22,6 +22,11 @@ const router = createRouter({
       path: '/nfc',
       name: 'nfc',
       component: () => import('@/components/NFC/NFC.vue')
+    },
+    {
+      path: '/face-liveliness',
+      name: 'face-liveliness',
+      component: () => import('@/components/FaceLiveliness/FaceLiveliness.vue')
     }
   ]
 });

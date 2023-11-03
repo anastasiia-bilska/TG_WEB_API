@@ -7,6 +7,7 @@
     <router-link to="/haptic">HapticFeedback</router-link>
     <router-link to="/main-button">MainButton</router-link>
     <router-link to="/nfc">NFC *</router-link>
+    <router-link to="/face-liveliness">FaceLiveliness *</router-link>
   </main>
 </template>
 
